@@ -7,10 +7,12 @@
 </head>
 <body>
     <form action="/register">
-    <p>E-Mail Address：<input type="mail"></p>
-    <p>Password：<input type="password"></p>
-    <p><input type="radio">Remember me</p>
-    <p><input type="submit" value="Login"> <a href="">Forget Your Password</a></p>
+    <table border=1>
+    <tr><th>E-Mail Address：</th><td><input type="mail"></td></tr>
+    <tr><th>Password：</th><td><input type="password"></td></tr>
+    <tr><th></th><td><input type="radio">Remember me</td></tr>
+    <tr><th></th><td><input type="submit" value="Login"> <a href="">Forget Your Password</a></td></tr>
+    </table>
     </form>
 </body>
 </html>
