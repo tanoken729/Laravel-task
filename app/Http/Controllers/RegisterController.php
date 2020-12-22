@@ -10,4 +10,10 @@ class RegisterController extends Controller
     {
         return view('register');
     }
+
+    public function post(Request $request)
+    {
+        // $request->all();
+        return view('home', ['name'=>$request->name]);
+    }
 }
