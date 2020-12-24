@@ -12,7 +12,7 @@
         </ul>
     </div>
     @endif
-    <form action="/home" method="post">
+    <form action="/register" method="post">
         @csrf
         <table border=1>
         <tr><th>Name：</th><td><input type="text" name="name"></td></tr>
