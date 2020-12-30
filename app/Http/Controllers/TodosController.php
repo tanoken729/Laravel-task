@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TodosController extends Controller
 {
-    //
+    //DBにあるレコードを表示する
     public function add(Request $request)
     {
         $todos =Todo::all();
@@ -16,6 +16,7 @@ class TodosController extends Controller
 
     public function create(Request $request)
     {
+        //レコードを追加する
         $this->validate($request, Todo::$rules);
         $todo = new Todo;
         $form = $request->all();
