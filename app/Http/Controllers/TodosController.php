@@ -14,9 +14,9 @@ class TodosController extends Controller
         return view('todos.index', ['todos' => $todos]);
     }
 
+    //レコードを追加する
     public function create(Request $request)
     {
-        //レコードを追加する
         $this->validate($request, Todo::$rules);
         $todo = new Todo;
         $form = $request->all();
