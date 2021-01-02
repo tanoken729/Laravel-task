@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Todo;
 use Illuminate\Http\Request;
+use App\Http\Requests\TodoRequest;
 
 class TodosController extends Controller
 {
     //DBにあるレコードを表示する
-    public function add(Request $request)
+    public function index(Request $request)
     {
         $todos =Todo::all();
         return view('todos.index', ['todos' => $todos]);
     }
 
     //レコードを追加する
-    public function create(Request $request)
+    public function store(TodoRequest $request)
     {
-        $this->validate($request, Todo::$rules);
+        // $this->validate($request, Todo::$rules);
         $todo = new Todo;
         $form = $request->all();
         unset($form['_token']);

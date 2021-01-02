@@ -22,5 +22,5 @@ Route::get('/login', 'LoginController@index');
 Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@post');
 
-Route::get('todos','TodosController@add');
-Route::post('todos','TodosController@create');
+Route::get('todos','TodosController@index');
+Route::post('todos','TodosController@store');
