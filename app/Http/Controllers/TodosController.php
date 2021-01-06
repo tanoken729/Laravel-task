@@ -26,4 +26,11 @@ class TodosController extends Controller
         return redirect('todos');
     }
 
+    // レコードを削除する
+    public function remove(Request $request)
+    {
+        Todo::find($request->id)->delete();
+        return redirect('todos');
+    }
+
 }

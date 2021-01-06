@@ -24,3 +24,4 @@ Route::post('/register', 'RegisterController@post');
 
 Route::get('todos','TodosController@index');
 Route::post('todos','TodosController@store');
+Route::post('/todos/{id}','TodosController@remove');
