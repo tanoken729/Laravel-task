@@ -29,7 +29,7 @@ class TodosController extends Controller
     //state変換
     public function update(Request $request)
     {
-        Todo::where('id', $request->id)
+        Todo::find($request->id)
         ->update(['state' => $request->state]);
         return redirect('todos');
     }
