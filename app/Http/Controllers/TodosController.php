@@ -26,6 +26,14 @@ class TodosController extends Controller
         return redirect('todos');
     }
 
+    //state変換
+    public function update(Request $request)
+    {
+        Todo::where('id', $request->id)
+        ->update(['state' => $request->state]);
+        return redirect('todos');
+    }
+
     // レコードを削除する
     public function remove(Request $request)
     {
