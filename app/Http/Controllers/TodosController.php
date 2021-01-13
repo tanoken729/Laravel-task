@@ -18,7 +18,6 @@ class TodosController extends Controller
     //レコードを追加する
     public function store(TodoRequest $request)
     {
-        // $this->validate($request, Todo::$rules);
         $todo = new Todo;
         $form = $request->all();
         unset($form['_token']);
@@ -26,7 +25,7 @@ class TodosController extends Controller
         return redirect('todos');
     }
 
-    //state変換
+    //stateを更新する
     public function update(Request $request)
     {
         Todo::find($request->id)
@@ -37,7 +36,8 @@ class TodosController extends Controller
     // レコードを削除する
     public function remove(Request $request)
     {
-        Todo::find($request->id)->delete();
+        Todo::find($request->id)
+        ->delete();
         return redirect('todos');
     }
 

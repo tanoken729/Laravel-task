@@ -24,5 +24,5 @@ Route::post('/register', 'RegisterController@post');
 
 Route::get('todos','TodosController@index');
 Route::post('todos','TodosController@store');
-Route::post('/todos/{id}','TodosController@update');
-Route::post('/todos/{id}','TodosController@remove');
+Route::patch('/todos/{id}','TodosController@update');
+Route::delete('/todos/{id}','TodosController@remove');
