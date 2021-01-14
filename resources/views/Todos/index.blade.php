@@ -28,18 +28,15 @@
           <input type="hidden" name="id" value="{{$todo->id}}">
           <td>{{$loop->iteration}}</td>
           <td>{{$todo->comment}}</td>
-          @if($todo->state > 0)
           <form action="{{url('/todos', $todo->id)}}" method="POST">
             @method('PATCH')
             @csrf
+          @if($todo->state > 0)
             <!-- 作業中ボタン -->
             <td><input type="submit" value="作業中"></td>
             <input type="hidden" name="state" value="0">
           </form>
           @else
-          <form action="{{url('/todos', $todo->id)}}" method="POST">
-            @method('PATCH')
-            @csrf
             <!-- 完了ボタン -->
             <td><input type="submit" value="完了"></td>
             <input type="hidden" name="state" value="1">

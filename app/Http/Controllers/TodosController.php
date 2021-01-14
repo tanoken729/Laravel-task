@@ -26,7 +26,7 @@ class TodosController extends Controller
     }
 
     //stateを更新する
-    public function update(Request $request)
+    public function stateChange(Request $request)
     {
         Todo::find($request->id)
         ->update(['state' => $request->state]);
