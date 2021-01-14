@@ -35,13 +35,12 @@
             <!-- 作業中ボタン -->
             <td><input type="submit" value="作業中"></td>
             <input type="hidden" name="state" value="0">
-          </form>
           @else
             <!-- 完了ボタン -->
             <td><input type="submit" value="完了"></td>
             <input type="hidden" name="state" value="1">
-          </form>
           @endif
+          </form>
           <form action="{{url('/todos', $todo->id)}}" method="POST">
             @method('DELETE')
             @csrf
