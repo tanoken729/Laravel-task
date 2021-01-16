@@ -1,7 +1,6 @@
 @extends('layouts.parents')
 
 @section('title', 'Todoリスト')
-<script src="{{ asset('/js/change-display.js') }}"></script>
 
 @section('content')
   @if(count($errors) > 0)
