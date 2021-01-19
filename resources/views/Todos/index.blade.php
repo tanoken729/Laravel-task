@@ -13,9 +13,9 @@
     </div>
    @endif
 <h1>Todoリスト</h1>
-  <label><input type="radio" checked>すべて</label>
-  <label><input type="radio">作業中</label>
-  <label><input type="radio">完了</label>
+  <label><input type="radio" name="change-displey" onclick="changeDispley();" checked>すべて</label>
+  <label><input type="radio" name="change-displey" onclick="changeDispley();" >作業中</label>
+  <label><input type="radio" name="change-displey" onclick="changeDispley();" >完了</label>
     <table>
       <tr>
         <th>ID</th>
@@ -23,21 +23,20 @@
         <th>状態</th>
       </tr>
       @foreach($todos as $todo)
-        <tr>
+        <tr class="tasks">
         <!-- findで検索されたIDを取得 -->
           <input type="hidden" name="id" value="{{$todo->id}}">
           <td>{{$loop->iteration}}</td>
           <td>{{$todo->comment}}</td>
-          <form action="{{url('/todos', $todo->id)}}" method="POST">
-            @method('PATCH')
+          <form action="{{url('/todos/state', $todo->id)}}" method="POST">
             @csrf
           @if($todo->state > 0)
             <!-- 作業中ボタン -->
-            <td><input type="submit" value="作業中"></td>
+            <td><input class="unCompleted" type="submit" value="作業中"></td>
             <input type="hidden" name="state" value="0">
           @else
             <!-- 完了ボタン -->
-            <td><input type="submit" value="完了"></td>
+            <td><input class="completed" type="submit" value="完了"></td>
             <input type="hidden" name="state" value="1">
           @endif
           </form>
