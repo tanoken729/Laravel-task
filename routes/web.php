@@ -30,3 +30,10 @@ Route::delete('/todos/{id}','TodosController@remove');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('posts','PostsController@index');
+Route::get('posts/create','PostsController@create');
+Route::post('posts','PostsController@store');
+Route::post('posts/edit/{id}','PostsController@edit');
+Route::put('posts/update/{id}','PostsController@update');
+Route::delete('posts/{id}','PostsController@destroy');
