@@ -41,7 +41,7 @@ class PostsController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $post->fill($form)->save();
-        return redirect('posts');
+        return redirect('/posts');
     }
 
     /**
@@ -63,11 +63,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(PostRequest $request)
     {
-        $this->validate($request, Post::$rules);
         Post::find($request->id)->update(['title' => $request->title, 'content' => $request->content]);
-        return redirect('posts');
+        return redirect('/posts');
     }
 
     /**

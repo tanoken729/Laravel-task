@@ -45,7 +45,7 @@
       <dd>{{$post->content}}</dd>
       <div style="display:inline-flex">
         <p>投稿者：UserName</p>
-        <form action="{{url('/posts/edit', $post->id)}}" method="POST">
+        <form action="{{url('/posts/edit', $post->id)}}" method="GET">
           @csrf
             <input class="btn edit" type="submit" value="編集する">
         </form>
