@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -15,8 +16,14 @@ class PostsController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
+        $authUser = Auth::user(); // 認証ユーザー取得
+        $posts = Post::with('user')->get();
+        $posts = [
+            'authUser' => $authUser,
+            'posts' => $posts,
+        ];
+
+        return view('posts.index', $posts);
     }
 
     /**
@@ -26,7 +33,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $authUser = Auth::user(); // 認証ユーザー取得
+        return view('posts.create', ['authUser' => $authUser]); // ビューの描画
+
     }
 
     /**
@@ -37,6 +46,7 @@ class PostsController extends Controller
      */
     public function store(PostRequest $request)
     {
+        // dd($request);
         $post = new Post;
         $form = $request->all();
         unset($form['_token']);
@@ -52,8 +62,9 @@ class PostsController extends Controller
      */
     public function edit(Request $request)
     {
+        $authUser = Auth::user(); // 認証ユーザー取得
         $posts = Post::find($request->id);
-        return view('posts.edit', ['posts' => $posts]);
+        return view('posts.edit', ['authUser' => $authUser, 'posts' => $posts]);
     }
 
     /**

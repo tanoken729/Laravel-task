@@ -12,4 +12,9 @@ class Post extends Model
         'title' => 'required',
         'content' => 'required|max:140',
     );
+
+    // belongsTo結合(主テーブル <- 従テーブル)
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

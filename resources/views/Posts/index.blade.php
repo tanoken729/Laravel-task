@@ -30,10 +30,13 @@
     color: #565656;
     background: #fdeff2;
     border: double 8px #e4d2d8;
-    box-shadow:#0c0c0c 3px 5px 0;
+    box-shadow: 0 10px 25px 0 #e95295;
   }
   .box2 {
     text-align:center
+  }
+  .h1 {
+    font-family: 'Noto Sans JP', sans-serif;
   }
 
 </style>
@@ -44,7 +47,8 @@
       <h1>{{$post->title}}</h1>
       <dd>{{$post->content}}</dd>
       <div style="display:inline-flex">
-        <p>投稿者：UserName</p>
+        <p>投稿者：{{$post->user_name}}</p>
+        @if($authUser->id === $post->user_id)
         <form action="{{url('/posts/edit', $post->id)}}" method="GET">
           @csrf
             <input class="btn edit" type="submit" value="編集する">
@@ -54,6 +58,9 @@
           @method('DELETE')
             <input class="btn delete" type="submit" value="削除する">
         </form>
+        @endif
+        <p>❤️</p>
+        <p>数字</p>
       </div>
     </div>
   </div>

@@ -13,6 +13,8 @@
 <div class="container mt-5 p-lg-5 bg-light">
     <form action="/posts" method="POST">
       @csrf
+      <input type="hidden" name="user_id" value="{{ $authUser->id }}">
+      <input type="hidden" name="user_name" value="{{ $authUser->name }}">
       <div class="form-group">
         <label for="title">タイトル</label>
         <input type="text" name="title" value="{{old('title')}}" id="title" class="form-control">
