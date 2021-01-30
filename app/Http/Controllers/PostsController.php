@@ -46,7 +46,6 @@ class PostsController extends Controller
      */
     public function store(PostRequest $request)
     {
-        // dd($request);
         $post = new Post;
         $form = $request->all();
         unset($form['_token']);
