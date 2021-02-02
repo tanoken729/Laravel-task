@@ -16,14 +16,8 @@ class PostsController extends Controller
      */
     public function index(Request $request)
     {
-        $authUser = Auth::user(); // 認証ユーザー取得
-        $posts = Post::with('user')->get();
-        $posts = [
-            'authUser' => $authUser,
-            'posts' => $posts,
-        ];
-
-        return view('posts.index', $posts);
+        $posts = Post::with('user')->get(); //withでusersテーブルも合わせて取得
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -33,9 +27,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $authUser = Auth::user(); // 認証ユーザー取得
-        return view('posts.create', ['authUser' => $authUser]); // ビューの描画
-
+        return view('posts.create'); // ビューの描画
     }
 
     /**
@@ -59,11 +51,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
-        $authUser = Auth::user(); // 認証ユーザー取得
-        $posts = Post::find($request->id);
-        return view('posts.edit', ['authUser' => $authUser, 'posts' => $posts]);
+        $posts = Post::find($id);
+        return view('posts.edit', compact('posts'));
     }
 
     /**
@@ -73,9 +64,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request)
+    public function update(PostRequest $request, $id)
     {
-        Post::find($request->id)->update(['title' => $request->title, 'content' => $request->content]);
+        Post::find($id)->update(['title' => $request->title, 'content' => $request->content]);
         return redirect('/posts');
     }
 
@@ -85,9 +76,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        Post::find($request->id)->delete();
-        return redirect('posts');
+        Post::find($id)->delete();
+        return redirect('/posts');
     }
 }

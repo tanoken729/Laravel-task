@@ -2,19 +2,19 @@
 
 @section('content')
 @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
 @endif
 <div class="container mt-5 p-lg-5 bg-light">
   <form action="{{url('/posts/update', $posts->id)}}" method="POST">
     @csrf
     @method('PUT')
-    <input type="hidden" name="user_id" value="{{ $authUser->id }}">
+    <input type="hidden" name="user_id" value="{{Auth::id()}}">
     <div class="form-group">
       <label for="title">タイトル</label>
       <input type="text" name="title" value="{{$posts->title}}" id="title" class="form-control">
