@@ -45,10 +45,10 @@
   <div class="box">
     <div class="box2">
       <h1>{{$post->title}}</h1>
-      <dd>{{$post->content}}</dd>
+      <dd class="card">{{$post->content}}</dd>
       <div style="display:inline-flex">
-        <p>投稿者：{{$post->user_name}}</p>
-        @if($authUser->id === $post->user_id)
+        <p>投稿者：{{$post->user->name}}</p>
+        @if(Auth::id() === $post->user_id)
         <form action="{{url('/posts/edit', $post->id)}}" method="GET">
           @csrf
             <input class="btn edit" type="submit" value="編集する">
