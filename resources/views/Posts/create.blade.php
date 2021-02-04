@@ -14,7 +14,6 @@
   <form action="/posts" method="POST">
     @csrf
     <input type="hidden" name="user_id" value="{{Auth::id()}}">
-    <input type="hidden" name="user_name" value="{{ Auth::User()->name }}">
     <div class="form-group">
       <label for="title">タイトル</label>
       <input type="text" name="title" value="{{old('title')}}" id="title" class="form-control">
