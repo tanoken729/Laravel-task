@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       <label for="content">コンテンツ</label>
-      <input type="textarea" name="content" value="{{$posts->content}}" id="content" class="form-control">
+      <textarea name="content" id="content" class="form-control" rows="5">{{$posts->content}}</textarea>
     </div>
       <button type="submit" class="btn btn-success">編集完了</button>
     </form>
