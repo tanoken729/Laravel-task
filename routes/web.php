@@ -38,4 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('posts/edit/{id}','PostsController@edit');
     Route::put('posts/update/{id}','PostsController@update');
     Route::delete('posts/{id}','PostsController@destroy');
+
+    Route::get('/posts/like/{id}', 'PostsController@like')->name('posts.like');
+    Route::get('/posts/unlike/{id}', 'PostsController@unlike')->name('posts.unlike');
 });
