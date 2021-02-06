@@ -28,13 +28,15 @@
         <!-- いいねボタン -->
         <div>
           @if($post->is_liked_by_auth_user())
-            <a href="{{ route('posts.unlike', ['id' => $post->id]) }}" class="fas fa-heart">いいね</a>
+            <a href="{{ route('likes.unlike', ['id' => $post->id]) }}" class="fa fa-heartbeat fa-2x" style="color:red"></a>
           @else
-            <a href="{{ route('posts.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね</a>
+            <a href="{{ route('likes.like', ['id' => $post->id]) }}" class="fa fa-heart fa-2x" style="color:#778899"></a>
           @endif
         </div>
         <!-- いいねボタン -->
+        <div class="btn">
         {{ $post->likes->count() }}
+        </div>
       </div>
     </div>
   </div>
