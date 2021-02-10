@@ -38,4 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('posts/edit/{id}','PostsController@edit');
     Route::put('posts/update/{id}','PostsController@update');
     Route::delete('posts/{id}','PostsController@destroy');
+
+    Route::get('/likes/like/{id}', 'LikesController@store')->name('likes.like');
+    Route::get('/likes/unlike/{id}', 'LikesController@destroy')->name('likes.unlike');
 });

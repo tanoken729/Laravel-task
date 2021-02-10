@@ -1,0 +1,37 @@
+.edit,
+input.edit {
+color: #fff;
+background-color: #3e62ad;
+}
+.edit:hover,
+input.edit:hover {
+color: #fff;
+background: #007bbb;
+}
+.delete,
+input.delete {
+color: #fff;
+background-color: #ee827c;
+
+}
+.delete:hover,
+input.delete:hover {
+color: #fff;
+background: #e95295;
+
+}
+
+.box {
+padding: 2em 0.5em;
+margin: 2em 100;
+color: #565656;
+background: #fdeff2;
+border: double 8px #e4d2d8;
+box-shadow: 0 10px 25px 0 #e95295;
+}
+.box2 {
+text-align:center
+}
+/* .h1 {
+font-family: 'Noto Sans JP', sans-serif;
+} */
